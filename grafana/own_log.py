@@ -11,7 +11,7 @@ def get_logger(logger_name=""):
     LOGGER.setLevel(logging.INFO)
 
     LOG_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir, 'logdir')
-    print("LOG_DIR=%s" % LOG_DIR)
+    print("LOG_DIR=%s\n" % LOG_DIR)
     if not os.path.exists(LOG_DIR):
         os.mkdir(LOG_DIR)
 
