@@ -15,52 +15,82 @@ from es_log import LOG
 class EsMonitorUtil(object):
 
     @staticmethod
-    def handle_urlopen(urldata, read_username, read_password):
+    def read_data_from_src(url):
+        url = "http://" + url
         if settings.read_es_security_enable:
             try:
                 password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
-                password_mgr.add_password(None, urldata, read_username, read_password)
+                password_mgr.add_password(None, url, settings.read_username, settings.read_password)
                 handler = urllib2.HTTPBasicAuthHandler(password_mgr)
                 opener = urllib2.build_opener(handler)
                 urllib2.install_opener(opener)
-                response = urllib2.urlopen(urldata)
+                response = urllib2.urlopen(url)
                 return response
-            except Exception as e:
+            except Exception, e:
                 LOG.info("Error:  {0}".format(str(e)))
         else:
             try:
-                response = urllib.urlopen(urldata)
+                response = urllib.urlopen(url)
                 return response
-            except Exception as e:
+            except Exception, e:
                 LOG.info("Error:  {0}".format(str(e)))
 
     @staticmethod
-    def create_index(es_server_to_monitor, es_index_to_storage):
-        import requests
-        index_mapping = {"mappings": {}}
-        index_mapping["mappings"]["message"] = {}
-        mapping = dict(type='keyword', norms='false')
-        strings_as_keywords = dict(match_mapping_type='string', mapping=mapping)
-        strings_as_keywords = dict(strings_as_keywords=strings_as_keywords)
-        dynamic_templates = [strings_as_keywords]
-        index_mapping["mappings"]["message"]["dynamic_templates"] = dynamic_templates
-        index_mapping["settings"] = {}
-        index_mapping["settings"]["index"] = {}
-        index_mapping["settings"]["index"]["number_of_shards"] = 1
-        index_mapping["settings"]["index"]["number_of_replicas"] = 0
-
-        index_mapping_str = json.dumps(index_mapping)
-        index_name = "%s-%s" % (es_index_to_storage, str(datetime.datetime.utcnow().strftime('%Y.%m.%d')))
-        resp = requests.put(url="%s/%s" % (es_server_to_monitor, index_name), json=json.loads(index_mapping_str), headers={'Content-Type': 'application/json'})
-        return resp.status_code
+    def send_data_to_dest(url, data, put_method):
+        url = "http://" + url
+        headers = {'content-type': 'application/json'}
+        try:
+            req = urllib2.Request(url, headers=headers, data=json.dumps(data))
+            if put_method:
+                req.get_method = lambda: "PUT"
+            if settings.write_es_security_enable:
+                password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
+                password_mgr.add_password(None, url, settings.write_username, settings.write_password)
+                handler = urllib2.HTTPBasicAuthHandler(password_mgr)
+                opener = urllib2.build_opener(handler)
+                urllib2.install_opener(opener)
+                response = urllib2.urlopen(req)
+                return response
+            else:
+                response = urllib2.urlopen(req)
+                return response
+        except Exception, e:
+            LOG.info("Error:  {0}".format(str(e)))
 
     @staticmethod
-    def fetch_clusterhealth(es_server_to_monitor):
+    def create_index(es_host_port_to_monitor, index_name, type_name):
+        # 1. check index exists or not
+        url = "%s/_cat/indices/%s?h=index" % (es_host_port_to_monitor, index_name)
+        response = EsMonitorUtil.read_data_from_src(url)
+        # 2. index not exists
+        if response.getcode() != 200:
+            # 2-1. build mapping and setting
+            index_mapping = {"mappings": {}}
+            index_mapping["mappings"][type_name] = {}
+            mapping = dict(type='keyword', norms='false')
+            strings_as_keywords = dict(match_mapping_type='string', mapping=mapping)
+            strings_as_keywords = dict(strings_as_keywords=strings_as_keywords)
+            dynamic_templates = [strings_as_keywords]
+            index_mapping["mappings"][type_name]["dynamic_templates"] = dynamic_templates
+            index_mapping["settings"] = {}
+            index_mapping["settings"]["index"] = {}
+            index_mapping["settings"]["index"]["number_of_shards"] = 1
+            index_mapping["settings"]["index"]["number_of_replicas"] = 0
+
+            # 2-2. build url and
+            url = "%s/%s" % (es_host_port_to_monitor, index_name)
+            response = EsMonitorUtil.send_data_to_dest(url, index_mapping, put_method=True)
+            time.sleep(1)
+            return response
+        return response
+
+    @staticmethod
+    def fetch_clusterhealth(es_host_port_to_monitor):
         try:
             utc_datetime = datetime.datetime.utcnow()
-            endpoint = "/_cluster/health"
-            urldata = es_server_to_monitor + endpoint
-            response = EsMonitorUtil.handle_urlopen(urldata, settings.read_username, settings.read_password)
+            endpoint = "_cluster/health"
+            url = "%s/%s" % (es_host_port_to_monitor, endpoint)
+            response = EsMonitorUtil.read_data_from_src(url)
             jsondata = json.loads(response.read())
             cluster_name = jsondata['cluster_name']
             jsondata['@timestamp'] = str(utc_datetime.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3])
@@ -77,26 +107,26 @@ class EsMonitorUtil(object):
             return cluster_name, "{}"
 
     @staticmethod
-    def fetch_clusterstats(es_server_to_monitor):
+    def fetch_clusterstats(es_host_port_to_monitor):
         utc_datetime = datetime.datetime.utcnow()
-        endpoint = "/_cluster/stats"
-        urldata = es_server_to_monitor + endpoint
-        response = EsMonitorUtil.handle_urlopen(urldata, settings.read_username, settings.read_password)
+        endpoint = "_cluster/stats"
+        url = "%s/%s" % (es_host_port_to_monitor, endpoint)
+        response = EsMonitorUtil.read_data_from_src(url)
         jsondata = json.loads(response.read())
         jsondata['@timestamp'] = str(utc_datetime.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3])
         return jsondata
 
     @staticmethod
-    def fetch_nodestats(es_server_to_monitor, cluster_name):
+    def fetch_nodestats(es_host_port_to_monitor, cluster_name):
         utc_datetime = datetime.datetime.utcnow()
-        endpoint = "/_cat/nodes?v&h=n"
-        urldata = es_server_to_monitor + endpoint
-        response = EsMonitorUtil.handle_urlopen(urldata, settings.read_username, settings.read_password)
+        endpoint = "_cat/nodes?v&h=n"
+        url = "%s/%s" % (es_host_port_to_monitor, endpoint)
+        response = EsMonitorUtil.read_data_from_src(url)
         nodes = response.read()[1:-1].strip().split('\n')
         for node in nodes:
-            endpoint = "/_nodes/%s/stats" % node.rstrip()
-            urldata = es_server_to_monitor + endpoint
-            response = EsMonitorUtil.handle_urlopen(urldata, settings.read_username, settings.read_password)
+            endpoint = "_nodes/%s/stats" % node.rstrip()
+            url = "%s/%s" % (es_host_port_to_monitor, endpoint)
+            response = EsMonitorUtil.read_data_from_src(url)
             jsondata = json.loads(response.read())
             nodeID = jsondata['nodes'].keys()
             try:
@@ -108,55 +138,38 @@ class EsMonitorUtil(object):
                 continue
 
     @staticmethod
-    def fetch_indexstats(es_server_to_monitor, cluster_name):
+    def fetch_indexstats(es_host_port_to_monitor, cluster_name):
         utc_datetime = datetime.datetime.utcnow()
-        endpoint = "/_stats"
-        urldata = es_server_to_monitor + endpoint
-        response = EsMonitorUtil.handle_urlopen(urldata, settings.read_username, settings.read_password)
+        endpoint = "_stats"
+        url = "%s/%s" % (es_host_port_to_monitor, endpoint)
+        response = EsMonitorUtil.read_data_from_src(url)
         jsondata = json.loads(response.read())
         jsondata['_all']['@timestamp'] = str(utc_datetime.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3])
         jsondata['_all']['cluster_name'] = cluster_name
         return jsondata['_all']
 
-    @staticmethod
-    def send_data_to_dest(es_server_to_storage, es_index_to_storage, data):
-        utc_datetime = datetime.datetime.utcnow()
-        url_parameters = {'cluster': es_server_to_storage, 'index': es_index_to_storage,
-                          'index_period': utc_datetime.strftime("%Y.%m.%d"), }
-        url = "%(cluster)s/%(index)s-%(index_period)s/message" % url_parameters
-        headers = {'content-type': 'application/json'}
-        try:
-            req = urllib2.Request(url, headers=headers, data=json.dumps(data))
-            if settings.write_es_security_enable:
-                password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
-                password_mgr.add_password(None, url, settings.write_username, settings.write_password)
-                handler = urllib2.HTTPBasicAuthHandler(password_mgr)
-                opener = urllib2.build_opener(handler)
-                urllib2.install_opener(opener)
-                response = urllib2.urlopen(req)
-            else:
-                response = urllib2.urlopen(req)
-        except Exception, e:
-            LOG.info("Error:  {0}".format(str(e)))
-
 
 class EsMonitor(multiprocessing.Process):
-    def __init__(self, es_server_to_monitor, es_server_to_storage, es_index_to_storage, interval_in_second=60):
+    def __init__(self, es_host_port_to_monitor, es_host_port_to_storage, es_index_to_storage, interval_in_second=60):
         super(EsMonitor, self).__init__()
-        self.es_server_to_monitor = es_server_to_monitor
-        self.es_server_to_storage = es_server_to_storage
+        self.es_host_port_to_monitor = es_host_port_to_monitor
+        self.es_host_port_to_storage = es_host_port_to_storage
         self.es_index_to_storage = es_index_to_storage
         self.interval_in_second = interval_in_second
 
     def go(self):
-        EsMonitorUtil.create_index(self.es_server_to_monitor, self.es_index_to_storage)
-        cluster_name, jsondata = EsMonitorUtil.fetch_clusterhealth(self.es_server_to_monitor)
+        index_name = "%s_%s" % (self.es_index_to_storage, str(datetime.datetime.utcnow().strftime('%Y%m%d')))
+        type_name = "msg"
+        EsMonitorUtil.create_index(self.es_host_port_to_monitor, index_name, type_name)
+        cluster_name, jsondata = EsMonitorUtil.fetch_clusterhealth(self.es_host_port_to_monitor)
         if cluster_name != "unknown":
-            clusterstats = EsMonitorUtil.fetch_clusterstats(self.es_server_to_monitor)
-            nodestats = EsMonitorUtil.fetch_nodestats(self.es_server_to_monitor, cluster_name)
-            indexstats = EsMonitorUtil.fetch_indexstats(self.es_server_to_monitor, cluster_name)
-            for one_jsondata in [jsondata, clusterstats, nodestats, indexstats]:
-                EsMonitorUtil.send_data_to_dest(self.es_server_to_storage, self.es_index_to_storage, one_jsondata)
+            cluster_stats = EsMonitorUtil.fetch_clusterstats(self.es_host_port_to_monitor)
+            node_stats = EsMonitorUtil.fetch_nodestats(self.es_host_port_to_monitor, cluster_name)
+            index_stats = EsMonitorUtil.fetch_indexstats(self.es_host_port_to_monitor, cluster_name)
+            # send monitor data
+            url = "%s/%s/%s" % (self.es_host_port_to_storage, index_name, type_name)
+            for one_jsondata in [jsondata, cluster_stats, node_stats, index_stats]:
+                EsMonitorUtil.send_data_to_dest(url, one_jsondata, put_method=False)  # urllib default is get/post
         return cluster_name
 
     def run(self):
@@ -171,30 +184,26 @@ class EsMonitor(multiprocessing.Process):
                 print("this is the cluster_name=%s, now=%s, Total Elapsed Time: %s" % (cluster_name, datetime.datetime.now(), elapsed))
                 LOG.info("this is the cluster_name=%s, now=%s, Total Elapsed Time: %s" % (cluster_name, datetime.datetime.now(), elapsed))
                 time_diff = next_run_in_second - time.time()
-
                 # Check timediff , if timediff >=0 sleep, if < 0 send metrics to es
                 if time_diff >= 0:
                     time.sleep(time_diff)
 
 
 def main(argv):
-    # argparse would be better, but not the build-in module
-    es_servers_to_monitor = argv[1]
-    es_server_to_storage = argv[2]
+    es_host_port_list_to_monitor = argv[1]
+    es_host_port_to_storage = argv[2]
     es_index_to_storage = argv[3]
     interval_in_second = int(argv[4])
-    LOG.info("this is the es_servers_to_monitor=%s, es_server_to_storage=%s, es_index_to_storage=%s, interval_in_second=%s" % (
-        es_servers_to_monitor, es_server_to_storage, es_index_to_storage, interval_in_second))
+    LOG.info("this is the es_host_port_list_to_monitor=%s, es_host_port_to_storage=%s, es_index_to_storage=%s, interval_in_second=%s" % (
+        es_host_port_list_to_monitor, es_host_port_to_storage, es_index_to_storage, interval_in_second))
 
-    # need multiprocessing, since `while true`
-    # http://www.runoob.com/python/python-multithreading.html
-    for es_server_to_monitor in es_servers_to_monitor.split(","):
-        EsMonitor("http://" + es_server_to_monitor.strip(), "http://" + es_server_to_storage.strip(), es_index_to_storage.strip(), interval_in_second).start()  # scheduler
+    # executor, need multiprocessing, since `while true`
+    for es_host_port_to_monitor in es_host_port_list_to_monitor.split(","):
+        EsMonitor(es_host_port_to_monitor.strip(), es_host_port_to_storage.strip(), es_index_to_storage.strip(), interval_in_second).start()  # scheduler
 
 
 def usage():
     print """usage end"""
-    print """not need http://, only host:port"""
     print """python collect_es_metric_to_grafana_esdb.py srcServer1:port,srcServer1:port,srcServer1:port destServer:port your_index_name 60"""
     print """python collect_es_metric_to_grafana_esdb.py localhost:9200,localhost:9202 localhost:9200 es_metric_collect 10"""
     print """usage end"""
