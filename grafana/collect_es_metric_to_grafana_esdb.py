@@ -12,7 +12,6 @@ import settings
 from es_log import LOG
 
 
-# TODO: cluster_name mapping setting
 class EsMonitorUtil(object):
 
     @staticmethod
@@ -34,6 +33,26 @@ class EsMonitorUtil(object):
                 return response
             except Exception as e:
                 LOG.info("Error:  {0}".format(str(e)))
+
+    @staticmethod
+    def create_index(es_server_to_monitor, es_index_to_storage):
+        import requests
+        index_mapping = {"mappings": {}}
+        index_mapping["mappings"]["message"] = {}
+        mapping = dict(type='keyword', norms='false')
+        strings_as_keywords = dict(match_mapping_type='string', mapping=mapping)
+        strings_as_keywords = dict(strings_as_keywords=strings_as_keywords)
+        dynamic_templates = [strings_as_keywords]
+        index_mapping["mappings"]["message"]["dynamic_templates"] = dynamic_templates
+        index_mapping["settings"] = {}
+        index_mapping["settings"]["index"] = {}
+        index_mapping["settings"]["index"]["number_of_shards"] = 1
+        index_mapping["settings"]["index"]["number_of_replicas"] = 0
+
+        index_mapping_str = json.dumps(index_mapping)
+        index_name = "%s-%s" % (es_index_to_storage, str(datetime.datetime.utcnow().strftime('%Y.%m.%d')))
+        resp = requests.put(url="%s/%s" % (es_server_to_monitor, index_name), json=json.loads(index_mapping_str), headers={'Content-Type': 'application/json'})
+        return resp.status_code
 
     @staticmethod
     def fetch_clusterhealth(es_server_to_monitor):
@@ -130,13 +149,13 @@ class EsMonitor(multiprocessing.Process):
         self.interval_in_second = interval_in_second
 
     def go(self):
+        EsMonitorUtil.create_index(self.es_server_to_monitor, self.es_index_to_storage)
         cluster_name, jsondata = EsMonitorUtil.fetch_clusterhealth(self.es_server_to_monitor)
         if cluster_name != "unknown":
             clusterstats = EsMonitorUtil.fetch_clusterstats(self.es_server_to_monitor)
             nodestats = EsMonitorUtil.fetch_nodestats(self.es_server_to_monitor, cluster_name)
             indexstats = EsMonitorUtil.fetch_indexstats(self.es_server_to_monitor, cluster_name)
-            for one_jsondata in [jsondata]:
-                # for one_jsondata in [jsondata, clusterstats, nodestats, indexstats]:
+            for one_jsondata in [jsondata, clusterstats, nodestats, indexstats]:
                 EsMonitorUtil.send_data_to_dest(self.es_server_to_storage, self.es_index_to_storage, one_jsondata)
         return cluster_name
 
@@ -170,7 +189,7 @@ def main(argv):
     # need multiprocessing, since `while true`
     # http://www.runoob.com/python/python-multithreading.html
     for es_server_to_monitor in es_servers_to_monitor.split(","):
-        EsMonitor("http://" + es_server_to_monitor.strip(), "http://" + es_server_to_storage.strip(), es_index_to_storage.strip(), interval_in_second).start()
+        EsMonitor("http://" + es_server_to_monitor.strip(), "http://" + es_server_to_storage.strip(), es_index_to_storage.strip(), interval_in_second).start()  # scheduler
 
 
 def usage():
