@@ -11,7 +11,7 @@ from own_log import LOG
 from own_util import Util, DateUtil
 
 
-class EsMonitorMetric(object):
+class EsMonitorMetricSingle(object):
 
     @staticmethod
     def create_index(es_host_port_to_monitor, index_name):
@@ -66,7 +66,8 @@ class EsMonitorMetric(object):
             return cluster_name, "{}"
 
     @staticmethod
-    def fetch_cluster_stats(es_host_port_to_monitor):
+    # TODO: merge into one doc, instead one field one doc
+    def fetch_cluster_stats(es_host_port_to_monitor, cluster_name):
         """
         drop key(nodes, indices brief summary), since more detailed stats would be support in the next rest-ful API
         https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html
@@ -75,38 +76,18 @@ class EsMonitorMetric(object):
         url = "%s/%s" % (es_host_port_to_monitor, endpoint)
         response = Util.read_data_from_src(url)
         jsondata = json.loads(response.read())
-        jsondata['@timestamp'] = DateUtil.get_current_time_str()
-        # drop key
-        jsondata.pop("nodes")
-        jsondata.pop("indices")
-        return jsondata
-
-    @staticmethod
-    def fetch_node_stats(es_host_port_to_monitor, cluster_name):
-        """
-        monitor each node
-        https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html
-        """
-        endpoint = "_cat/nodes?v&h=n"
+        #
+        index_count = jsondata["indices"]["count"]
+        #
+        endpoint = "_cat/nodes?h=ip"
         url = "%s/%s" % (es_host_port_to_monitor, endpoint)
         response = Util.read_data_from_src(url)
-        nodes = response.read()[1:-1].strip().split('\n')
-        new_jsondata_list = []
-        #
-        for node in nodes:
-            endpoint = "_nodes/%s/stats" % node.rstrip()
-            url = "%s/%s" % (es_host_port_to_monitor, endpoint)
-            response = Util.read_data_from_src(url)
-            jsondata = json.loads(response.read())
-            nodeID = jsondata['nodes'].keys()
-            try:
-                jsondata['nodes'][nodeID[0]]['@timestamp'] = DateUtil.get_current_time_str()
-                jsondata['nodes'][nodeID[0]]['cluster_name'] = cluster_name
-                new_jsondata = jsondata['nodes'][nodeID[0]]
-                new_jsondata_list.append(new_jsondata)
-            except:
-                continue
-        return new_jsondata_list
+        ip_list = response.read().strip().split('\n')
+        machine_count = len(set(ip_list))
+
+        # merge
+        jsondata = {'@timestamp': DateUtil.get_current_time_str(), 'cluster_name': cluster_name, 'index_count': index_count, 'machine_count': machine_count}
+        return jsondata
 
     @staticmethod
     def fetch_index_stats(es_host_port_to_monitor, cluster_name):
@@ -125,6 +106,57 @@ class EsMonitorMetric(object):
         return jsondata['_all']
 
 
+class EsMonitorMetricMultiple(object):
+
+    @staticmethod
+    def fetch_node_stats(es_host_port_to_monitor, cluster_name):
+        """
+        monitor each node
+        https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html
+        """
+        # 1. only node name extra
+        endpoint = "_cat/nodes?v&h=n"
+        url = "%s/%s" % (es_host_port_to_monitor, endpoint)
+        response = Util.read_data_from_src(url)
+        nodes = response.read()[1:-1].strip().split('\n')
+        new_jsondata_list = []
+        # 2. disk
+        # https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-allocation.html
+        # https://www.elastic.co/guide/en/elasticsearch/reference/current/cat.html (format)
+        endpoint = "_cat/allocation?v&h=disk*,node&bytes=b&format=json"
+        url = "%s/%s" % (es_host_port_to_monitor, endpoint)
+        response = Util.read_data_from_src(url)
+        disk_stat_json_list = json.loads(response.read())
+        # key extra
+        disk_stats = {}
+        for one_disk_stat_json in disk_stat_json_list:
+            node_name = one_disk_stat_json["node"]  # eslog-sh-common
+            disk_stats[node_name] = one_disk_stat_json  # convert list to map
+            disk_stats[node_name].pop("node")  # remove the key from map since it have been the key in outside
+            dic = disk_stats[node_name]  # convert string to int/long
+            disk_stats[node_name] = dict((k, int(v)) for k, v in dic.iteritems())
+
+        # 3. each node
+        for node in nodes:
+            # 1. mainly
+            endpoint = "_nodes/%s/stats" % node.rstrip()
+            url = "%s/%s" % (es_host_port_to_monitor, endpoint)
+            response = Util.read_data_from_src(url)
+            jsondata = json.loads(response.read())
+            nodeID = jsondata['nodes'].keys()
+            try:
+                jsondata['nodes'][nodeID[0]]['@timestamp'] = DateUtil.get_current_time_str()
+                jsondata['nodes'][nodeID[0]]['cluster_name'] = cluster_name
+                node_name = jsondata['nodes'][nodeID[0]]['name']  # get node name
+                jsondata['nodes'][nodeID[0]]['disk'] = {}
+                jsondata['nodes'][nodeID[0]]['disk'] = disk_stats[node_name]
+                new_jsondata = jsondata['nodes'][nodeID[0]]
+                new_jsondata_list.append(new_jsondata)
+            except:
+                continue
+        return new_jsondata_list
+
+
 class EsMonitorTimer(multiprocessing.Process):
 
     def __init__(self, es_host_port_to_monitor, es_host_port_to_storage, es_index_to_storage, interval_in_second=60):
@@ -136,14 +168,14 @@ class EsMonitorTimer(multiprocessing.Process):
 
     def go(self):
         index_name = "%s_%s" % (self.es_index_to_storage, str(datetime.datetime.utcnow().strftime('%Y%m%d')))
-        EsMonitorMetric.create_index(self.es_host_port_to_monitor, index_name)
-        cluster_name, jsondata = EsMonitorMetric.fetch_cluster_health(self.es_host_port_to_monitor)
+        EsMonitorMetricSingle.create_index(self.es_host_port_to_storage, index_name)
+        cluster_name, jsondata = EsMonitorMetricSingle.fetch_cluster_health(self.es_host_port_to_monitor)
         if cluster_name != "unknown":
             # dict
-            cluster_stats = EsMonitorMetric.fetch_cluster_stats(self.es_host_port_to_monitor)
-            index_stats = EsMonitorMetric.fetch_index_stats(self.es_host_port_to_monitor, cluster_name)
+            cluster_stats = EsMonitorMetricSingle.fetch_cluster_stats(self.es_host_port_to_monitor, cluster_name)
+            index_stats = EsMonitorMetricSingle.fetch_index_stats(self.es_host_port_to_monitor, cluster_name)
             # dict list
-            node_stats_list = EsMonitorMetric.fetch_node_stats(self.es_host_port_to_monitor, cluster_name)
+            node_stats_list = EsMonitorMetricMultiple.fetch_node_stats(self.es_host_port_to_monitor, cluster_name)
             # send monitor data
             url = "%s/%s/%s" % (self.es_host_port_to_storage, index_name, own_settings.type_name)
             for one_jsondata in ([jsondata, cluster_stats, index_stats] + node_stats_list):
@@ -159,8 +191,8 @@ class EsMonitorTimer(multiprocessing.Process):
                 # run here
                 cluster_name = EsMonitorTimer.go(self)
                 elapsed = time.time() - now
-                print("this is the cluster_name=%s, now=%s, Total Elapsed Time: %s" % (cluster_name, datetime.datetime.now(), elapsed))
-                LOG.info("this is the cluster_name=%s, now=%s, Total Elapsed Time: %s" % (cluster_name, datetime.datetime.now(), elapsed))
+                print("this is the cluster_name=%20s, now=%s, Total Elapsed Time: %.2f" % (cluster_name, datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), elapsed))
+                LOG.info("this is the cluster_name=%20s, Total Elapsed Time: %.2f" % (cluster_name, elapsed))
                 time_diff = next_run_in_second - time.time()
                 # Check timediff , if timediff >=0 sleep, if < 0 send metrics to es
                 if time_diff >= 0:
