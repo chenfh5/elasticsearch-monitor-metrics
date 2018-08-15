@@ -66,7 +66,8 @@ class EsMonitorMetricSingle(object):
             return cluster_name, "{}"
 
     @staticmethod
-    def fetch_cluster_stats(es_host_port_to_monitor):
+    # TODO: merge into one doc, instead one field one doc
+    def fetch_cluster_stats(es_host_port_to_monitor, cluster_name):
         """
         drop key(nodes, indices brief summary), since more detailed stats would be support in the next rest-ful API
         https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html
@@ -75,10 +76,17 @@ class EsMonitorMetricSingle(object):
         url = "%s/%s" % (es_host_port_to_monitor, endpoint)
         response = Util.read_data_from_src(url)
         jsondata = json.loads(response.read())
-        jsondata['@timestamp'] = DateUtil.get_current_time_str()
-        # drop key
-        jsondata.pop("nodes")
-        jsondata.pop("indices")
+        #
+        index_count = jsondata["indices"]["count"]
+        #
+        endpoint = "_cat/nodes?h=ip"
+        url = "%s/%s" % (es_host_port_to_monitor, endpoint)
+        response = Util.read_data_from_src(url)
+        ip_list = response.read().strip().split('\n')
+        machine_count = len(set(ip_list))
+
+        # merge
+        jsondata = {'@timestamp': DateUtil.get_current_time_str(), 'cluster_name': cluster_name, 'index_count': index_count, 'machine_count': machine_count}
         return jsondata
 
     @staticmethod
@@ -164,7 +172,7 @@ class EsMonitorTimer(multiprocessing.Process):
         cluster_name, jsondata = EsMonitorMetricSingle.fetch_cluster_health(self.es_host_port_to_monitor)
         if cluster_name != "unknown":
             # dict
-            cluster_stats = EsMonitorMetricSingle.fetch_cluster_stats(self.es_host_port_to_monitor)
+            cluster_stats = EsMonitorMetricSingle.fetch_cluster_stats(self.es_host_port_to_monitor, cluster_name)
             index_stats = EsMonitorMetricSingle.fetch_index_stats(self.es_host_port_to_monitor, cluster_name)
             # dict list
             node_stats_list = EsMonitorMetricMultiple.fetch_node_stats(self.es_host_port_to_monitor, cluster_name)
@@ -183,8 +191,8 @@ class EsMonitorTimer(multiprocessing.Process):
                 # run here
                 cluster_name = EsMonitorTimer.go(self)
                 elapsed = time.time() - now
-                print("this is the cluster_name=%s, now=%s, Total Elapsed Time: %s" % (cluster_name, datetime.datetime.now(), elapsed))
-                LOG.info("this is the cluster_name=%s, now=%s, Total Elapsed Time: %s" % (cluster_name, datetime.datetime.now(), elapsed))
+                print("this is the cluster_name=%20s, now=%s, Total Elapsed Time: %.2f" % (cluster_name, datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'), elapsed))
+                LOG.info("this is the cluster_name=%20s, Total Elapsed Time: %.2f" % (cluster_name, elapsed))
                 time_diff = next_run_in_second - time.time()
                 # Check timediff , if timediff >=0 sleep, if < 0 send metrics to es
                 if time_diff >= 0:

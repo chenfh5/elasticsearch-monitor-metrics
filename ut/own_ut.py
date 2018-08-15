@@ -58,7 +58,7 @@ class TestEsMonitorMetricSingle(unittest.TestCase):
         self.assertTrue(resp[1]["number_of_pending_tasks"] >= 0)
 
     def test_fetch_cluster_stats(self):
-        resp = EsMonitorMetricSingle.fetch_cluster_stats(own_settings.es_server_to_monitor)
+        resp = EsMonitorMetricSingle.fetch_cluster_stats(own_settings.es_server_to_monitor, "c5-es-540")
         print(json.dumps(resp))
         self.assertTrue(resp["status"] in ["green", "yellow", "red"])
 
