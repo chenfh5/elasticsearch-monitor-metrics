@@ -6,7 +6,7 @@
 2. Set up one or more es clusters
 3. Set up the grafana and configure its data source(name=own_grafana_es) using es with your_index_name and pattern([your_storage_index_name_]YYYYMMDD)
 4. Import Dashboard using JSON format from ./grafana/dashboard.json
-5. sh ./bin/run.sh localhost:9200,localhost:9202 localhost:9200 es_metric_collect 30
+5. sh ./bin/run.sh localhost:9200,localhost:9202 localhost:9200 your_storage_index_name 30
 6. check grafana and enjoy your trip
 
 # Snapshot
