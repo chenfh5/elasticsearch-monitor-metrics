@@ -130,11 +130,14 @@ class EsMonitorMetricMultiple(object):
         # key extra
         disk_stats = {}
         for one_disk_stat_json in disk_stat_json_list:
-            node_name = one_disk_stat_json["node"]  # eslog-sh-common
-            disk_stats[node_name] = one_disk_stat_json  # convert list to map
-            disk_stats[node_name].pop("node")  # remove the key from map since it have been the key in outside
-            dic = disk_stats[node_name]  # convert string to int/long
-            disk_stats[node_name] = dict((k, int(v)) for k, v in dic.iteritems())
+            try:
+                node_name = one_disk_stat_json["node"]  # eslog-sh-common
+                disk_stats[node_name] = one_disk_stat_json  # convert list to map
+                disk_stats[node_name].pop("node")  # remove the key from map since it have been the key in outside
+                dic = disk_stats[node_name]  # convert string to int/long
+                disk_stats[node_name] = dict((k, int(v)) for k, v in dic.iteritems())
+            except:
+                continue
 
         # 3. each node
         for node in nodes:
@@ -214,8 +217,8 @@ def main(argv):
 
 def usage():
     print """usage end"""
-    print """python collect_es_metric_to_grafana_esdb.py srcServer1:port,srcServer1:port,srcServer1:port destServer:port your_index_name 60"""
-    print """python collect_es_metric_to_grafana_esdb.py localhost:9200,localhost:9202 localhost:9200 es_metric_collect 10"""
+    print """python collect_es_metric_to_grafana_esdb.py srcServer1:port,srcServer1:port,srcServer1:port destServer:port your_storage_index_name 60"""
+    print """e.g., python collect_es_metric_to_grafana_esdb.py localhost:9200,localhost:9202 localhost:9200 es_metric_collect 10"""
     print """usage end"""
 
 
