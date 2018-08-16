@@ -1,8 +1,6 @@
 # elasticsearch-monitor-metrics
-
 > 使用grafana(dataSource=es)展示多集群的es监控信息
 
-----
 # QuickStart
 1. mark your_storage_index_name to store monitor metrics
 2. Set up one or more es clusters
@@ -11,7 +9,9 @@
 5. sh ./bin/run.sh localhost:9200,localhost:9202 localhost:9200 es_metric_collect 30
 6. check grafana and enjoy your trip
 
-----
+# Snapshot
+![grafana custom es each cluster monitor whole snapshot](https://upload-images.jianshu.io/upload_images/2189341-11bb124eb783cf1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 # TODO Upgrade
 | build-in  | third-party |
 |---:|---:|
