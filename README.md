@@ -10,7 +10,7 @@
 6. check grafana and enjoy your trip
 
 # Snapshot
-![grafana custom es each cluster monitor whole snapshot](https://upload-images.jianshu.io/upload_images/2189341-11bb124eb783cf1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![grafana custom es each cluster monitor whole snapshot](https://upload-images.jianshu.io/upload_images/2189341-d10a82c8c8b8eb4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 # TODO Upgrade
 | build-in  | third-party |
