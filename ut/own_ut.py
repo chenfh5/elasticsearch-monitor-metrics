@@ -4,8 +4,8 @@ import json
 import time
 import unittest
 
-from grafana import own_settings
-from grafana.own_util import DateUtil, Util
+from monitor import own_settings
+from monitor.own_util import DateUtil, Util
 
 
 class UtilTest(unittest.TestCase):
@@ -42,7 +42,7 @@ class UtilTest(unittest.TestCase):
         self.assertTrue(resp.getcode() == 200)
 
 
-from grafana.collect_es_metric_to_grafana_esdb import EsMonitorMetricSingle
+from monitor.collect_es_metric_to_grafana_esdb import EsMonitorMetricSingle
 
 
 class TestEsMonitorMetricSingle(unittest.TestCase):
@@ -68,7 +68,7 @@ class TestEsMonitorMetricSingle(unittest.TestCase):
         self.assertTrue(resp["total"]["segments"]["count"] >= 0)
 
 
-from grafana.collect_es_metric_to_grafana_esdb import EsMonitorMetricMultiple
+from monitor.collect_es_metric_to_grafana_esdb import EsMonitorMetricMultiple
 
 
 class TestEsMonitorMetricMultiple(unittest.TestCase):

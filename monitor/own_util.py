@@ -4,7 +4,7 @@ import datetime
 import json
 import urllib2
 
-from grafana import own_settings
+import own_settings
 from own_log import LOG
 
 
