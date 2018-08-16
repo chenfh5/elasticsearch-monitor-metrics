@@ -10,6 +10,8 @@
 6. check grafana and enjoy your trip
 
 # Snapshot
+![grafana custom es each cluster monitor checklist for each cluster](https://upload-images.jianshu.io/upload_images/2189341-f0fbba0ed8ef91b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+<br>
 ![grafana custom es each cluster monitor whole snapshot](https://upload-images.jianshu.io/upload_images/2189341-d10a82c8c8b8eb4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 # TODO Upgrade
