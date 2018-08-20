@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 11,
-  "iteration": 1534487640628,
+  "id": 5,
+  "iteration": 1534749394433,
   "links": [],
   "panels": [
     {
@@ -33,8 +33,8 @@
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "bk_es",
-          "value": "bk_es"
+          "text": "c5-es-540",
+          "value": "c5-es-540"
         }
       },
       "title": "CHECKLIST FOR EACH CLUSTER",
@@ -95,8 +95,8 @@
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "bk_es",
-          "value": "bk_es"
+          "text": "c5-es-540",
+          "value": "c5-es-540"
         }
       },
       "sparkline": {
@@ -202,8 +202,8 @@
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "bk_es",
-          "value": "bk_es"
+          "text": "c5-es-540",
+          "value": "c5-es-540"
         }
       },
       "sparkline": {
@@ -310,8 +310,8 @@
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "bk_es",
-          "value": "bk_es"
+          "text": "c5-es-540",
+          "value": "c5-es-540"
         }
       },
       "sparkline": {
@@ -418,8 +418,8 @@
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "bk_es",
-          "value": "bk_es"
+          "text": "c5-es-540",
+          "value": "c5-es-540"
         }
       },
       "sparkline": {
@@ -492,13 +492,13 @@
       "id": 99,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 94,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-datalog-new",
-          "value": "es-datalog-new"
+          "text": "c5-es-630",
+          "value": "c5-es-630"
         }
       },
       "title": "CHECKLIST FOR EACH CLUSTER",
@@ -556,14 +556,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 95,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-datalog-new",
-          "value": "es-datalog-new"
+          "text": "c5-es-630",
+          "value": "c5-es-630"
         }
       },
       "sparkline": {
@@ -666,14 +666,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 97,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-datalog-new",
-          "value": "es-datalog-new"
+          "text": "c5-es-630",
+          "value": "c5-es-630"
         }
       },
       "sparkline": {
@@ -777,14 +777,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 96,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-datalog-new",
-          "value": "es-datalog-new"
+          "text": "c5-es-630",
+          "value": "c5-es-630"
         }
       },
       "sparkline": {
@@ -888,14 +888,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 98,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-datalog-new",
-          "value": "es-datalog-new"
+          "text": "c5-es-630",
+          "value": "c5-es-630"
         }
       },
       "sparkline": {
@@ -968,13 +968,13 @@
       "id": 104,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 94,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-eslog-security",
-          "value": "es-eslog-security"
+          "text": "es-test",
+          "value": "es-test"
         }
       },
       "title": "CHECKLIST FOR EACH CLUSTER",
@@ -1032,14 +1032,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 95,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-eslog-security",
-          "value": "es-eslog-security"
+          "text": "es-test",
+          "value": "es-test"
         }
       },
       "sparkline": {
@@ -1142,14 +1142,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 97,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-eslog-security",
-          "value": "es-eslog-security"
+          "text": "es-test",
+          "value": "es-test"
         }
       },
       "sparkline": {
@@ -1253,14 +1253,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 96,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-eslog-security",
-          "value": "es-eslog-security"
+          "text": "es-test",
+          "value": "es-test"
         }
       },
       "sparkline": {
@@ -1364,14 +1364,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 98,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-eslog-security",
-          "value": "es-eslog-security"
+          "text": "es-test",
+          "value": "es-test"
         }
       },
       "sparkline": {
@@ -1444,13 +1444,13 @@
       "id": 109,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 94,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-eslog-sh-common",
-          "value": "es-eslog-sh-common"
+          "text": "eslog",
+          "value": "eslog"
         }
       },
       "title": "CHECKLIST FOR EACH CLUSTER",
@@ -1508,14 +1508,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 95,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-eslog-sh-common",
-          "value": "es-eslog-sh-common"
+          "text": "eslog",
+          "value": "eslog"
         }
       },
       "sparkline": {
@@ -1618,14 +1618,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 97,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-eslog-sh-common",
-          "value": "es-eslog-sh-common"
+          "text": "eslog",
+          "value": "eslog"
         }
       },
       "sparkline": {
@@ -1729,14 +1729,14 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 96,
       "repeatedByRow": true,
       "scopedVars": {
         "Clustername": {
           "selected": false,
-          "text": "es-eslog-sh-common",
-          "value": "es-eslog-sh-common"
+          "text": "eslog",
+          "value": "eslog"
         }
       },
       "sparkline": {
@@ -1840,1435 +1840,7 @@
           "to": "null"
         }
       ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 98,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-common",
-          "value": "es-eslog-sh-common"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "status_code",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "1,2",
-      "title": "$Clustername",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "Green",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "Yellow",
-          "value": "1"
-        },
-        {
-          "op": "=",
-          "text": "Red",
-          "value": "2"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 24
-      },
-      "id": 114,
-      "panels": [],
-      "repeat": null,
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 94,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-fifa",
-          "value": "es-eslog-sh-fifa"
-        }
-      },
-      "title": "CHECKLIST FOR EACH CLUSTER",
-      "type": "row"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 0,
-        "y": 25
-      },
-      "id": 115,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "cur=",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 95,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-fifa",
-          "value": "es-eslog-sh-fifa"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "os.cpu.percent",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "70,85",
-      "title": "OS_CPU_max_percent",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 3,
-        "y": 25
-      },
-      "id": 116,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "cur=",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 97,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-fifa",
-          "value": "es-eslog-sh-fifa"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "disk.disk.percent",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "80,90",
-      "title": "Disk_max_used_percent",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 6,
-        "y": 25
-      },
-      "id": 117,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "cur=",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 96,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-fifa",
-          "value": "es-eslog-sh-fifa"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "jvm.mem.heap_used_percent",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "85,92",
-      "title": "Heap_memory_max_used_percent",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#3f6833",
-        "#cca300",
-        "#890f02"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 9,
-        "y": 25
-      },
-      "id": 118,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 98,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-fifa",
-          "value": "es-eslog-sh-fifa"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "status_code",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "1,2",
-      "title": "$Clustername",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "Green",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "Yellow",
-          "value": "1"
-        },
-        {
-          "op": "=",
-          "text": "Red",
-          "value": "2"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 30
-      },
-      "id": 119,
-      "panels": [],
-      "repeat": null,
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 94,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-sds",
-          "value": "es-eslog-sh-sds"
-        }
-      },
-      "title": "CHECKLIST FOR EACH CLUSTER",
-      "type": "row"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 0,
-        "y": 31
-      },
-      "id": 120,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "cur=",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 95,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-sds",
-          "value": "es-eslog-sh-sds"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "os.cpu.percent",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "70,85",
-      "title": "OS_CPU_max_percent",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 3,
-        "y": 31
-      },
-      "id": 121,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "cur=",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 97,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-sds",
-          "value": "es-eslog-sh-sds"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "disk.disk.percent",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "80,90",
-      "title": "Disk_max_used_percent",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 6,
-        "y": 31
-      },
-      "id": 122,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "cur=",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 96,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-sds",
-          "value": "es-eslog-sh-sds"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "jvm.mem.heap_used_percent",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "85,92",
-      "title": "Heap_memory_max_used_percent",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#3f6833",
-        "#cca300",
-        "#890f02"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 9,
-        "y": 31
-      },
-      "id": 123,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 98,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "es-eslog-sh-sds",
-          "value": "es-eslog-sh-sds"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "status_code",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "1,2",
-      "title": "$Clustername",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "Green",
-          "value": "0"
-        },
-        {
-          "op": "=",
-          "text": "Yellow",
-          "value": "1"
-        },
-        {
-          "op": "=",
-          "text": "Red",
-          "value": "2"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 36
-      },
-      "id": 124,
-      "panels": [],
-      "repeat": null,
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 94,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "eslog",
-          "value": "eslog"
-        }
-      },
-      "title": "CHECKLIST FOR EACH CLUSTER",
-      "type": "row"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 0,
-        "y": 37
-      },
-      "id": 125,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "cur=",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 95,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "eslog",
-          "value": "eslog"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "os.cpu.percent",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "70,85",
-      "title": "OS_CPU_max_percent",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 3,
-        "y": 37
-      },
-      "id": 126,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "cur=",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 97,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "eslog",
-          "value": "eslog"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "disk.disk.percent",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "80,90",
-      "title": "Disk_max_used_percent",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 6,
-        "y": 37
-      },
-      "id": 127,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "cur=",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
-      "repeatPanelId": 96,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "Clustername": {
-          "selected": false,
-          "text": "eslog",
-          "value": "eslog"
-        }
-      },
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "@timestamp",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "jvm.mem.heap_used_percent",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "cluster_name:$Clustername",
-          "refId": "A",
-          "timeField": "@timestamp"
-        }
-      ],
-      "thresholds": "85,92",
-      "title": "Heap_memory_max_used_percent",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": true,
-      "colorValue": false,
-      "colors": [
-        "#3f6833",
-        "#cca300",
-        "#890f02"
-      ],
-      "datasource": "own_grafana_es",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 3,
-        "x": 9,
-        "y": 37
-      },
-      "id": 128,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "repeatIteration": 1534487640628,
+      "repeatIteration": 1534749394433,
       "repeatPanelId": 98,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3343,7 +1915,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 42
+        "y": 24
       },
       "id": 31,
       "panels": [
@@ -4100,7 +2672,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 43
+        "y": 25
       },
       "id": 6,
       "panels": [
@@ -5104,7 +3676,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 44
+        "y": 26
       },
       "id": 55,
       "panels": [
@@ -5702,7 +4274,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 27
       },
       "id": 78,
       "panels": [
@@ -6201,7 +4773,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 28
       },
       "id": 57,
       "panels": [
@@ -7923,7 +6495,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 29
       },
       "id": 80,
       "panels": [
@@ -8444,7 +7016,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 48
+        "y": 30
       },
       "id": 41,
       "panels": [
@@ -8703,7 +7275,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -8805,5 +7376,5 @@
   "timezone": "",
   "title": "own_custom_es_each_cluster_monitor",
   "uid": "i7CzSy5mz",
-  "version": 9
+  "version": 1
 }
